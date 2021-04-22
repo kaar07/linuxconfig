@@ -1,13 +1,10 @@
-
-
-" Required for Vundle
-
-set nocompatible 
-filetype off 
+set nocompatible              " required for Vundle
+filetype off                  " required for Vundle
 set laststatus=2
 set noshowmode
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-"Following plugins will be installed in Vim
+
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'jiangmiao/auto-pairs'
@@ -23,10 +20,17 @@ call vundle#begin()
   Plugin 'othree/html5.vim'
   Plugin 'tell-k/vim-autopep8'
   Plugin 'tpope/vim-surround'
+  Plugin 'iamcco/markdown-preview.nvim'
+  Plugin 'juliaeditorsupport/julia-vim'
+  Plugin 'mattn/emmet-vim'
+  Plugin 'alvan/vim-closetag'
 call vundle#end()       
 
 filetype plugin on
-filetype plugin indent on 
+filetype plugin indent on    " required
+" :PluginList       - lists configured plugins :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" see :h vundle for more details or wiki for FAQ 
 
 
 "for NerdTree
@@ -46,9 +50,13 @@ let g:NERDSpaceDelims = 1
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+"for markdownpreview
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
 
-
-
+"emmet
+let g:user_emmet_leader_key=','
 
 "All Mappings at one place and Key Bindings. Only for reference
 
@@ -77,11 +85,13 @@ colorscheme solarized8_high
 "highlight Comment cterm=italic gui=italic ctermfg=8
 highlight LineNr ctermbg=0 ctermfg=8
 set linebreak
+set foldmethod=syntax
+set nofoldenable
 
 "Automating and templating stuff
 "###########################################################################################################################################
-" Check for .vim folder if templates are saved or not.
 
 :autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
 :autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp
 :autocmd BufNewFile gen.py 0r ~/.vim/templates/gen.py
+

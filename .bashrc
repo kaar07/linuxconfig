@@ -9,16 +9,32 @@ PS1='\[\e[1;36m\]\h \[\e[m\]\[\e[1;31m\]:\[\e[m\]\[\e[1;31m\]:\[\e[m\] \[\e[1;32
 
 
 
-
-alias lsl='ls -l --group-directories-first --color=auto'
-alias ls='ls --group-directories-first --color=auto'
-alias rescan='nmcli dev wifi rescan'
-alias pc='ping archlinux.org'
-alias pbcopy='xclip -selection clipboard'
+#overall
 alias vi="vim"
 alias upd='sudo pacman -Syu'
-
-# Browser ALIAS
+function mcd(){
+  mkdir $1 && cd $1
+}
+alias lsl='ls -l --group-directories-first --color=auto'
+alias ls='ls --group-directories-first --color=auto'
+alias lstype='ls -l --color=auto | sort'
+alias lssize='ls -lSr --group-directories-first --color=auto'
+#network manager and stuff
+alias ghost='nmcli dev wifi connect G_Host'
+alias kaarthik='nmcli dev wifi connect kaarthik'
+alias rescan='nmcli dev wifi rescan'
+alias pc='ping archlinux.org'
+#xclip
+alias pbcopy='xclip -selection clipboard'
+function fileurl(){
+  # pipe the the file address to xclip clipboard 
+  # Use <C>-v or <C>-shift-v to paste
+  readlink -f $1 | pbcopy 
+}
+#Custom soft
+alias tblock="python ~/.timeblock/main.py"
+alias pro="cat /home/khik/.todopro"
+#browser
 alias kaar07='firefox clist.by/coder/kaar07'
 alias cforces='firefox www.codeforces.com/'
 alias chef='firefox www.codechef.com/compete'
@@ -30,43 +46,18 @@ alias github='firefox www.github.com/kaar07'
 alias kaggle='firefox www.kaggle.com'
 alias blog='firefox https://kaar07.github.io'
 alias earth="brave https://www.hackerearth.com/@kaar07"
-
-# for Custom Software
-alias tblock="python ~/.timeblock/main.py"
-
-
-# functions
-
-function fileurl(){
-  # pipe the the file address to xclip clipboard 
-  # Use <C>-v or <C>-shift-v to paste
-  readlink -f $1 | pbcopy 
-}
-
 function google(){
   firefox www.google.com/search?q=$1
 }
-
 function wiki(){
   firefox www.google.com/search?q=$1:en.wikipedia.org
 }
-
 function soflow(){
   firefox www.google.com/search?q=$1:stackoverflow.com
 }
-
 function ddg(){
   firefox www.duckduckgo.com/?q=$1
 }
-function compete(){
-  firefox www.codechef.com/compete
-  firefox www.codeforces.com
-  firefox www.binarysearch.com
-  firefox www.leetcode.com
-  firefox clist.by
-}
-
 function f(){
   firefox https://$1
 }
-
