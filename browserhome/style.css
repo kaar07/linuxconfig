@@ -1,0 +1,29 @@
+body{
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0.33)), url('background.png');
+  background-size: cover;
+}
+
+
+
+.link-tree{
+  display: inline-block;
+  text-align: center;
+  padding: 100px;
+  position: fixed;
+  right: 300px;
+}
+
+
+.search-box{
+  display: inline-block;
+  position: fixed;
+  top : 50px;
+  padding: 50px;
+}
+
+.single-tree{
+  display: inline-block;
+  margin: auto;
+  flex-direction: row;
+}
+
